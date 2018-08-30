@@ -1,4 +1,4 @@
-package edu.kit.cm.WorkspaceManagement.Workspace.Infrastructure.Config;
+package edu.kit.cm.BffAtisApp.Workspace.Infrastructure.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
