@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @CrossOrigin
-@RestController("/prediction")
+@RestController
 public class PredictionController {
 
 	private RestTemplate restTemplate = new RestTemplate();
 	private String url = "https://utilization.cm.tm.kit.edu/prediction";
 
-	@GetMapping("/{day}")
+	@GetMapping("/prediction/{day}")
 	public ResponseEntity<IntegerArray> getPredictionAtWeekday(@PathVariable("day") String date) {
 		if(date.contains("?algo=fast")) {
 			return restTemplate.getForEntity(url+"/day/"+date.substring(0,date.indexOf("?")),IntegerArray.class);
