@@ -1,4 +1,4 @@
-package edu.kit.cm.BffAtisApp.Workspace.Infrastructure;
+package edu.kit.cm.BffAtisApp.Infrastructure;
 
 import com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +14,7 @@ public class PredictionController {
 
 	private RestTemplate restTemplate = new RestTemplate();
 	private String url = "https://utilization.cm.tm.kit.edu/prediction";
+	//private String url = "http://localhost:8080/prediction";
 
 	@GetMapping("/prediction/{day}")
 	public ResponseEntity<IntegerArray> getPredictionAtWeekday(@PathVariable("day") String date) {

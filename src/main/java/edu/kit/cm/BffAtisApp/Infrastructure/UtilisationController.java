@@ -1,5 +1,6 @@
-package edu.kit.cm.BffAtisApp.Workspace.Infrastructure;
+package edu.kit.cm.BffAtisApp.Infrastructure;
 
+import edu.kit.cm.BffAtisApp.Service.UtilisationAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -8,8 +9,16 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class UtilisationController {
 
+	UtilisationAdapter utilisationAdapter = UtilisationAdapter.getInstance();
+
 	private RestTemplate restTemplate = new RestTemplate();
 	private String url = "https://utilization.cm.tm.kit.edu";
+	//private String url = "http://localhost:8080";
+
+	@PutMapping("/update")
+	public void update() {
+		utilisationAdapter.update();
+	}
 
 	@GetMapping("/utilisation/workspaceState")
 	public ResponseEntity<String> getCurrentState() {

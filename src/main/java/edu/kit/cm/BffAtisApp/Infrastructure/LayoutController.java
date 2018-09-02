@@ -1,4 +1,4 @@
-package edu.kit.cm.BffAtisApp.Workspace.Infrastructure;
+package edu.kit.cm.BffAtisApp.Infrastructure;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
