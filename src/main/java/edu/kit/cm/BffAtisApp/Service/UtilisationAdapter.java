@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 public class UtilisationAdapter {
@@ -25,5 +26,12 @@ public class UtilisationAdapter {
         jsonObject.put("computersWithState",rt.getForEntity("https://workspace.cm.tm.kit.edu/getComputersWithState", String.class).getBody());
         ResponseEntity<Map> responseEntity = new ResponseEntity(jsonObject.toMap(), HttpStatus.OK);
         rt.put("https://utilization.cm.tm.kit.edu/update", responseEntity);
+        test();
+    }
+
+    private void test() {
+        RestTemplate rt = new RestTemplate();
+        LocalDateTime localDateTime = rt.getForEntity("https://utilization.cm.tm.kit.edu/lastHistoryEntryDate",LocalDateTime.class).getBody();
+        rt.put("https://utilization.cm.tm.kit.edu/addHistoryEntryList",new ResponseEntity(ATISAdapter.getInstance().getSeatsMap(localDateTime),HttpStatus.OK));
     }
 }
