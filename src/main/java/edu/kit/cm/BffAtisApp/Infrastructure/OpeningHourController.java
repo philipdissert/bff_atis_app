@@ -13,7 +13,6 @@ public class OpeningHourController {
 
 	@GetMapping("/opening-hours")
 	public ResponseEntity<String> get() {
-		System.out.println("TEST1");
 		return restTemplate.getForEntity(url, String.class);
 	}
 

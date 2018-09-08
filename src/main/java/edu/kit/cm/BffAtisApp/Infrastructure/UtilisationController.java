@@ -15,38 +15,32 @@ public class UtilisationController {
 	private String url = "https://utilization.cm.tm.kit.edu";
 	//private String url = "http://localhost:8080";
 
-	@PutMapping("/update")
-	public void update() {
-		utilisationAdapter.update();
-	}
-
 	@GetMapping("/utilisation/workspaceState")
 	public ResponseEntity<String> getCurrentState() {
 		return restTemplate.getForEntity(url+"/currentState",String.class);
 	}
 
-	@GetMapping("/utilisation/current")
+	@GetMapping("/utilisation")
 	public ResponseEntity<String> getCurrentUtilization() {
-		System.out.println("Test2");
 		return restTemplate.getForEntity(url+"/currentUtilization",String.class);
 	}
 
-	@GetMapping("/utilisation/current/free")
+	@GetMapping("/utilisation/free")
 	public ResponseEntity<Integer> getCurrentUtilizationFreeWorksaces() {
 		return restTemplate.getForEntity(url+"/currentUtilization/free",Integer.class);
 	}
 
-	@GetMapping("/utilisation/current/occupied")
+	@GetMapping("/utilisation/occupied")
 	public ResponseEntity<Integer> getCurrentUtilizationOccupiedWorksaces() {
 		return restTemplate.getForEntity(url+"/currentUtilization/occupied",Integer.class);
 	}
 
-	@GetMapping("/utilisation/current/percentageFree")
+	@GetMapping("/utilisation/percentageFree")
 	public ResponseEntity<Double> getCurrentUtilizationFreePercentage() {
 		return restTemplate.getForEntity(url+"/currentUtilization/percentageFree",Double.class);
 	}
 
-	@GetMapping("/utilisation/current/percentageOccupied")
+	@GetMapping("/utilisation/percentageOccupied")
 	public ResponseEntity<Double> getCurrentUtilizationOccupiedPercentage() {
 		return restTemplate.getForEntity(url+"/currentUtilization/percentageOccupied",Double.class);
 	}
